@@ -131,6 +131,7 @@ function initPortfolioApp() {
 
   const engine = new DunkmanEngine(canvas, {
     theme: 'classic',
+    mode: 'PLAYER',
     onHudUpdate(hud) {
       if (hudPercent) hudPercent.textContent = `${hud.percent.toFixed(1)}%`;
       if (hudProgressFill) hudProgressFill.style.width = `${hud.percent}%`;
@@ -144,7 +145,7 @@ function initPortfolioApp() {
           GAME: '⚡ FAST BREAK GUARDING',
           HOOP: '🚀 ELEVATING TO THE RIM',
           SLAM: '💥 KABOOM! SLAM DUNK!',
-          LOSE: '🚨 BALL STOLEN — RETRY'
+          LOSE: '🚨 BALL STOLEN — RUNNING IT BACK'
         };
         hudStateText.textContent = labels[hud.state] || hud.state;
       }
@@ -152,13 +153,16 @@ function initPortfolioApp() {
       if (hudBest) hudBest.textContent = `BEST: ${hud.bestPercent.toFixed(0)}%`;
       if (hudModeBadge) {
         hudModeBadge.textContent =
-          hud.mode === 'ATTRACT' ? 'AI ATTRACT DEMO' : 'PLAYER 1 (#3 DYLE)';
+          hud.mode === 'ATTRACT' ? 'AI ATTRACT DEMO' : 'LIVE GAMEPLAY (#3 DYLE)';
       }
       if (attractOverlay) {
         attractOverlay.classList.toggle('hidden', hud.mode === 'PLAYER');
       }
     }
   });
+
+  // Auto-launch the game banner immediately the moment the website opens!
+  engine.startPlayerGame(false);
 
   // 60FPS Game Loop
   function loop() {

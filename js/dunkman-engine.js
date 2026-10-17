@@ -551,7 +551,7 @@ export class DunkmanEngine {
     this.speedlines = new Speedlines();
     this.focuslines = new Focuslines(CENTERX, 58);
 
-    this.mode = 'ATTRACT'; // 'ATTRACT' | 'PLAYER'
+    this.mode = options.mode || 'ATTRACT'; // 'ATTRACT' | 'PLAYER'
     this.state = 'GAME'; // 'CUTIN' | 'GAME' | 'HOOP' | 'SLAM' | 'LOSE'
     this.stateTicks = 0;
     this.ticks = 0;
@@ -796,8 +796,12 @@ export class DunkmanEngine {
     }
 
     if (this.state === 'LOSE') {
-      if (this.stateTicks >= 160 && this.mode === 'ATTRACT') {
-        this.startAttractMode();
+      if (this.stateTicks >= 120) {
+        if (this.mode === 'ATTRACT') {
+          this.startAttractMode();
+        } else {
+          this.startPlayerGame(false);
+        }
       }
       this.render();
       this.emitHud();
