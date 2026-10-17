@@ -128,7 +128,7 @@ function initPortfolioApp() {
 
   const engine = new DunkmanEngine(canvas, {
     theme: 'classic',
-    mode: 'PLAYER',
+    mode: 'ATTRACT',
     onHudUpdate(hud) {
       if (hudPercent) hudPercent.textContent = `${hud.percent.toFixed(1)}%`;
       if (hudProgressFill) hudProgressFill.style.width = `${hud.percent}%`;
@@ -139,7 +139,7 @@ function initPortfolioApp() {
       if (hudStateText) {
         const labels = {
           CUTIN: '🔥 "I AM THE DUNKMAN!"',
-          GAME: '⚡ FAST BREAK GUARDING',
+          GAME: hud.mode === 'ATTRACT' ? '🤖 AI DEMO : FAST BREAK' : '⚡ LIVE FAST BREAK GUARDING',
           HOOP: '🚀 ELEVATING TO THE RIM',
           SLAM: '💥 KABOOM! SLAM DUNK!',
           LOSE: '🚨 BALL STOLEN : RUNNING IT BACK'
@@ -158,8 +158,8 @@ function initPortfolioApp() {
     }
   });
 
-  // Auto-launch the game banner immediately the moment the website opens!
-  engine.startPlayerGame(false);
+  // Auto-launch the game banner in AI Demo mode when user is not playing!
+  engine.startAttractMode();
 
   // 60FPS Game Loop
   function loop() {
@@ -167,6 +167,26 @@ function initPortfolioApp() {
     window.requestAnimationFrame(loop);
   }
   window.requestAnimationFrame(loop);
+
+  // Auto-switch to AI Demo when user is idle / not playing
+  let idleTimer = null;
+  const IDLE_TIMEOUT_MS = 6000; // 6 seconds of inactivity returns to AI Demo
+
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      if (engine.mode === 'PLAYER' && pressedKeys.size === 0) {
+        engine.startAttractMode();
+      }
+    }, IDLE_TIMEOUT_MS);
+  }
+
+  function switchToPlayer(withCutIn = false) {
+    if (engine.mode === 'ATTRACT' || engine.state === 'LOSE') {
+      engine.startPlayerGame(withCutIn);
+    }
+    resetIdleTimer();
+  }
 
   // Keyboard Controls (Arrow keys & WASD)
   const pressedKeys = new Set();
@@ -198,27 +218,26 @@ function initPortfolioApp() {
     const tag = document.activeElement ? document.activeElement.tagName : '';
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
 
-    if (e.code === 'Space' && (engine.state === 'LOSE' || engine.mode === 'ATTRACT')) {
+    if (e.code === 'Space') {
       e.preventDefault();
-      engine.startPlayerGame(true);
+      switchToPlayer(true);
       return;
     }
 
     if (keyMap[e.code]) {
-      if (engine.mode === 'PLAYER') {
-        e.preventDefault();
-      }
+      e.preventDefault();
+      switchToPlayer(false);
       pressedKeys.add(e.code);
       syncKeyboardVector();
+      resetIdleTimer();
     }
   });
 
   window.addEventListener('keyup', (e) => {
     if (keyMap[e.code]) {
       pressedKeys.delete(e.code);
-      if (engine.mode === 'PLAYER') {
-        syncKeyboardVector();
-      }
+      syncKeyboardVector();
+      resetIdleTimer();
     }
   });
 
@@ -234,32 +253,33 @@ function initPortfolioApp() {
 
     canvas.addEventListener('pointerdown', (e) => {
       canvas.focus();
-      if (engine.mode === 'ATTRACT' || engine.state === 'LOSE') {
-        engine.startPlayerGame(true);
-      } else {
-        handlePointer(e.clientX, e.clientY);
-      }
+      switchToPlayer(false);
+      handlePointer(e.clientX, e.clientY);
+      resetIdleTimer();
     });
 
     canvas.addEventListener('pointermove', (e) => {
-      if (engine.mode === 'PLAYER' && engine.state === 'GAME') {
-        handlePointer(e.clientX, e.clientY);
-      }
+      // Any pointer movement over the canvas activates player control
+      switchToPlayer(false);
+      handlePointer(e.clientX, e.clientY);
+      resetIdleTimer();
     });
   }
 
   // Interactive 8-Direction Octant Guard Pad
   document.querySelectorAll('.oct-btn').forEach((btn) => {
     const triggerOctant = () => {
+      switchToPlayer(false);
       const dx = Number(btn.dataset.dx || 0);
       const dy = Number(btn.dataset.dy || 0);
       engine.setInputDirection(dx, dy, true);
       document.querySelectorAll('.oct-btn').forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
+      resetIdleTimer();
     };
     btn.addEventListener('pointerdown', triggerOctant);
     btn.addEventListener('mouseenter', (e) => {
-      if (e.buttons === 1 || engine.mode === 'PLAYER') {
+      if (e.buttons === 1) {
         triggerOctant();
       }
     });
@@ -267,13 +287,14 @@ function initPortfolioApp() {
 
   // Play, AI Demo, and Theater Mode Buttons
   const startPlayHandler = () => {
-    engine.startPlayerGame(true);
+    switchToPlayer(true);
     if (canvas) canvas.focus();
   };
 
   document.getElementById('hero-play-btn')?.addEventListener('click', startPlayHandler);
   document.getElementById('cabinet-play-btn')?.addEventListener('click', startPlayHandler);
   document.getElementById('cabinet-ai-btn')?.addEventListener('click', () => {
+    clearTimeout(idleTimer);
     engine.startAttractMode();
   });
 

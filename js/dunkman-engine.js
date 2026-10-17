@@ -797,11 +797,7 @@ export class DunkmanEngine {
 
     if (this.state === 'LOSE') {
       if (this.stateTicks >= 120) {
-        if (this.mode === 'ATTRACT') {
-          this.startAttractMode();
-        } else {
-          this.startPlayerGame(false);
-        }
+        this.startAttractMode();
       }
       this.render();
       this.emitHud();
