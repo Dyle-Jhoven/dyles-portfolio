@@ -351,13 +351,22 @@ function initPortfolioApp() {
     });
   });
 
-  // Copy Contact Phone Button
-  const copyBtn = document.getElementById('copy-email-btn');
-  copyBtn?.addEventListener('click', () => {
-    navigator.clipboard?.writeText(PORTFOLIO_DATA.personalInfo.contactNo).catch(() => {});
-    copyBtn.textContent = '✓ COPIED PHONE NO.';
+  // Copy Contact Email & Phone Buttons
+  const copyEmailBtn = document.getElementById('copy-email-btn');
+  copyEmailBtn?.addEventListener('click', () => {
+    navigator.clipboard?.writeText(PORTFOLIO_DATA.personalInfo.email).catch(() => {});
+    copyEmailBtn.textContent = '✓ COPIED EMAIL';
     setTimeout(() => {
-      copyBtn.textContent = 'COPY PHONE';
+      copyEmailBtn.textContent = 'COPY EMAIL';
+    }, 2000);
+  });
+
+  const copyPhoneBtn = document.getElementById('copy-phone-btn');
+  copyPhoneBtn?.addEventListener('click', () => {
+    navigator.clipboard?.writeText(PORTFOLIO_DATA.personalInfo.contactNo).catch(() => {});
+    copyPhoneBtn.textContent = '✓ COPIED PHONE NO.';
+    setTimeout(() => {
+      copyPhoneBtn.textContent = 'COPY PHONE';
     }, 2000);
   });
 

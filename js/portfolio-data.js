@@ -8,12 +8,12 @@ export const PORTFOLIO_DATA = {
     archetype: 'Basketball Operations, Game Officiating & Creative Computer Tech',
     tagline:
       'Antipolo City Sports Hub personnel and experienced basketball official with a foundation in creative computer technology from ICCT.',
-    status: 'ACTIVE AT ANTIPOLO SPORTS HUB // OPEN FOR OPPORTUNITIES',
+    status: 'ACTIVE AT ANTIPOLO SPORTS HUB • OPEN FOR OPPORTUNITIES',
     location: 'Barangay San Roque, Antipolo City',
     contactNumber: '09184511708',
+    email: 'dylejhoven17@gmail.com',
     age: 23,
     address: 'Blk 10 Lot 9 Marigman Street, Golden Hills, Barangay San Roque, Antipolo City',
-    references: 'Available upon request',
     bio: [
       'My name is Dyle Jhoven E. Payla. I am 23 years old from Antipolo City. Currently, I work on a job order basis at the Antipolo City Sports Hub, where I support daily facility operations, coordinate activities, and ensure that tournaments and sporting events run smoothly.',
       'On the court, I am an experienced basketball referee skilled in officiating games under pressure. I apply basketball rules, fouls, and violations consistently, make quick and fair calls, execute official signals, and maintain positive game flow.',
@@ -277,14 +277,14 @@ export const PORTFOLIO_DATA = {
     age: 23,
     address: 'Blk 10 Lot 9 Marigman Street, Golden Hills, Barangay San Roque, Antipolo City',
     contactNo: '09184511708',
-    references: 'Available upon request.'
+    email: 'dylejhoven17@gmail.com'
   },
 
   socials: {
+    email: 'dylejhoven17@gmail.com',
     contactNumber: '09184511708',
     location: 'Antipolo City, Rizal, Philippines',
-    tic80: 'https://tic80.com/dev/congusbongus/dunkman',
-    github: 'https://github.com/cxong/Dunkman'
+    tic80: 'https://tic80.com/dev/congusbongus/dunkman'
   }
 };
 
