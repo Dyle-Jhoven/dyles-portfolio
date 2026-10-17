@@ -86,7 +86,7 @@ function drawPolygon(ctx, points, fillColor, strokeColor = null) {
 
 export const SPRITES = {
   /**
-   * Renders the protagonist (Dyle #3 in Miami Heat jersey) running forward in the center of the 240x136 canvas.
+   * Renders the protagonist (Dyle #71 in Miami Heat jersey) running forward in the center of the 240x136 canvas.
    * Shoulders are positioned at Left (106, 70) and Right (138, 77) to match cxong/Dunkman's procedural IK arms.
    */
   drawPlayerTorso(ctx, palette, frameIndex = 0, offsetX = 0, offsetY = 0) {
@@ -161,15 +161,20 @@ export const SPRITES = {
     pxRect(ctx, 111 + ox, 73 + oy + bob, 18, 2, palette[15]);
     pxRect(ctx, 113 + ox, 76 + oy + bob, 14, 1, palette[9]);
 
-    // Iconic #3 Jersey Number on torso
+    // Iconic #71 Jersey Number on torso
     ctx.fillStyle = palette[15];
-    pxRect(ctx, 116 + ox, 79 + oy + bob, 10, 2, palette[15]);
-    pxRect(ctx, 123 + ox, 81 + oy + bob, 3, 4, palette[15]);
-    pxRect(ctx, 117 + ox, 84 + oy + bob, 9, 2, palette[15]);
-    pxRect(ctx, 123 + ox, 86 + oy + bob, 3, 5, palette[15]);
-    pxRect(ctx, 116 + ox, 90 + oy + bob, 10, 2, palette[15]);
-    // Gold drop-shadow pixel on #3
-    pxRect(ctx, 126 + ox, 80 + oy + bob, 1, 12, palette[9]);
+    // Digit 7
+    pxRect(ctx, 114 + ox, 79 + oy + bob, 7, 2, palette[15]);
+    pxRect(ctx, 118 + ox, 81 + oy + bob, 3, 3, palette[15]);
+    pxRect(ctx, 117 + ox, 84 + oy + bob, 3, 3, palette[15]);
+    pxRect(ctx, 116 + ox, 87 + oy + bob, 3, 5, palette[15]);
+    pxRect(ctx, 120 + ox, 80 + oy + bob, 1, 4, palette[9]); // Gold shadow 7
+    pxRect(ctx, 119 + ox, 84 + oy + bob, 1, 7, palette[9]);
+    // Digit 1
+    pxRect(ctx, 123 + ox, 81 + oy + bob, 2, 2, palette[15]); // 1 serif
+    pxRect(ctx, 125 + ox, 79 + oy + bob, 3, 11, palette[15]); // 1 stem
+    pxRect(ctx, 123 + ox, 90 + oy + bob, 6, 2, palette[15]); // 1 base
+    pxRect(ctx, 128 + ox, 80 + oy + bob, 1, 11, palette[9]); // Gold shadow 1
 
     // Neck & Head (leaning forward in intense anime sprint)
     pxRect(ctx, 118 + ox, 56 + oy + bob, 10, 10, palette[6]);
@@ -380,7 +385,7 @@ export const SPRITES = {
   },
 
   /**
-   * Draws Dyle #3 soaring mid-air one-handed toward the rim (pend.png in HoopState).
+   * Draws Dyle #71 soaring mid-air one-handed toward the rim (pend.png in HoopState).
    */
   drawJumpPlayer(ctx, palette, x, y) {
     const rx = Math.round(x);
@@ -608,7 +613,7 @@ export const SPRITES = {
     // Shoes
     pxRect(ctx, 88, 81, 6, 7, palette[0]);
     pxRect(ctx, 101, 90, 6, 7, palette[0]);
-    // Shorts & #3 Jersey back
+    // Shorts & #71 Jersey back
     drawPolygon(ctx, [[110, 62], [126, 54], [134, 68], [116, 76]], palette[12], palette[0]);
     drawPolygon(ctx, [[122, 52], [140, 46], [146, 58], [128, 66]], palette[12], palette[0]);
     pxRect(ctx, 130, 51, 6, 8, palette[15]);

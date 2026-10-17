@@ -4,9 +4,9 @@ import { PORTFOLIO_DATA, filterProjects } from '../js/portfolio-data.js';
 import { WIDTH, HEIGHT, PALETTES, SPRITES } from '../js/dunkman-sprites.js';
 import { DunkmanAudio } from '../js/dunkman-audio.js';
 
-test('PORTFOLIO_DATA has Dyle #3 profile and all project categories', () => {
+test('PORTFOLIO_DATA has Dyle #71 profile and all project categories', () => {
   assert.equal(PORTFOLIO_DATA.player.name, 'DYLE');
-  assert.equal(PORTFOLIO_DATA.player.number, '#3');
+  assert.equal(PORTFOLIO_DATA.player.number, '#71');
   assert.equal(filterProjects(PORTFOLIO_DATA.projects, 'all').length, PORTFOLIO_DATA.projects.length);
   assert.ok(filterProjects(PORTFOLIO_DATA.projects, 'game').length >= 2);
   assert.ok(filterProjects(PORTFOLIO_DATA.projects, 'cpe').length >= 2);

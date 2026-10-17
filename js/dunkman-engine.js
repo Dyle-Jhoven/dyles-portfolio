@@ -939,7 +939,7 @@ export class DunkmanEngine {
 
       ctx.fillStyle = p[11];
       ctx.font = 'bold 8px monospace';
-      ctx.fillText('"I AM DYLE #3 : THE DUNKMAN!!!"', 18, 102);
+      ctx.fillText('"I AM DYLE #71 : THE DUNKMAN!!!"', 18, 102);
       ctx.fillStyle = p[12];
       ctx.font = '7px monospace';
       ctx.fillText('PROTECT THE ROCK FOR 25 SECONDS!', 18, 116);

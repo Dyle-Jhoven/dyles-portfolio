@@ -150,7 +150,7 @@ function initPortfolioApp() {
       if (hudBest) hudBest.textContent = `BEST: ${hud.bestPercent.toFixed(0)}%`;
       if (hudModeBadge) {
         hudModeBadge.textContent =
-          hud.mode === 'ATTRACT' ? 'AI ATTRACT DEMO' : 'LIVE GAMEPLAY (#3 DYLE)';
+          hud.mode === 'ATTRACT' ? 'AI ATTRACT DEMO' : 'LIVE GAMEPLAY (#71 DYLE)';
       }
       if (attractOverlay) {
         attractOverlay.classList.toggle('hidden', hud.mode === 'PLAYER');
@@ -349,7 +349,7 @@ function initPortfolioApp() {
     const formData = new FormData(contractForm);
     const scoutName = formData.get('scoutName') || 'Scout';
     if (formStatusMsg) {
-      formStatusMsg.textContent = `🚨 BUZZER SOUNDED! Scouting offer from ${scoutName} logged for DYLE #3!`;
+      formStatusMsg.textContent = `🚨 BUZZER SOUNDED! Scouting offer from ${scoutName} logged for DYLE #71!`;
     }
     contractForm.reset();
   });

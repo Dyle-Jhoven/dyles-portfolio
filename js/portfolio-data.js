@@ -2,7 +2,7 @@ export const PORTFOLIO_DATA = {
   player: {
     name: 'DYLE',
     fullName: 'Dyle Jhoven E. Payla',
-    number: '#3',
+    number: '#71',
     position: 'SPORTS HUB PERSONNEL / BASKETBALL OFFICIAL / COMPUTER TECH',
     team: 'ANTIPOLO SPORTS HUB & ICCT',
     archetype: 'Basketball Operations, Game Officiating & Creative Computer Tech',
