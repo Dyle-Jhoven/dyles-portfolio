@@ -162,6 +162,10 @@ export class Speedlines {
     ctx.fillRect(0, (4 * HEIGHT) / 10, WIDTH, (2 * HEIGHT) / 10 + 1);
 
     // Draw shooting triangular speed streaks
+    this.drawStreaks(ctx, palette);
+  }
+
+  drawStreaks(ctx, palette) {
     for (const line of this.lines) {
       ctx.fillStyle = palette[line.c];
       ctx.beginPath();
@@ -173,6 +177,216 @@ export class Speedlines {
     }
   }
 }
+
+/**
+ * Retro Pixelated Basketball Arena Miami Heat Theme Background
+ * Featuring arena rafters, championship banners, packed Miami Heat crowd,
+ * animated LED ribbon board, and parquet basketball hardwood court!
+ */
+export class PixelArena {
+  constructor() {
+    this.scrollX = 0;
+    this.ribbonScroll = 0;
+    this.flashes = [];
+  }
+
+  tick() {
+    this.scrollX = (this.scrollX + 11) % 480;
+    this.ribbonScroll = (this.ribbonScroll + 1.25) % 240;
+
+    // Random crowd camera flashes
+    if (Math.random() < 0.28) {
+      this.flashes.push({
+        x: Math.random() * WIDTH,
+        y: 16 + Math.random() * 22,
+        r: 2 + Math.random() * 3,
+        life: 4
+      });
+    }
+    for (let i = this.flashes.length - 1; i >= 0; i--) {
+      this.flashes[i].life -= 1;
+      if (this.flashes[i].life <= 0) {
+        this.flashes.splice(i, 1);
+      }
+    }
+  }
+
+  draw(ctx, p) {
+    // 1. Rafters & Stadium Ceiling (y: 0..16)
+    ctx.fillStyle = p[0];
+    ctx.fillRect(0, 0, WIDTH, 16);
+
+    // Arena spotlight cones
+    ctx.fillStyle = p[11];
+    ctx.globalAlpha = 0.12;
+    ctx.beginPath();
+    ctx.moveTo(35, 0);
+    ctx.lineTo(8, 52);
+    ctx.lineTo(65, 52);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(205, 0);
+    ctx.lineTo(175, 52);
+    ctx.lineTo(235, 52);
+    ctx.closePath();
+    ctx.fill();
+    ctx.globalAlpha = 1.0;
+
+    // Steel Rafter Girders
+    ctx.strokeStyle = p[14];
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, 5);
+    ctx.lineTo(WIDTH, 5);
+    ctx.moveTo(0, 11);
+    ctx.lineTo(WIDTH, 11);
+    for (let x = 0; x < WIDTH; x += 16) {
+      ctx.moveTo(x, 5);
+      ctx.lineTo(x + 8, 11);
+      ctx.lineTo(x + 16, 5);
+    }
+    ctx.stroke();
+
+    // Miami Heat Championship Banners hanging from rafters ('06, '12, '13)
+    const banners = [
+      { x: 18, year: "'06" },
+      { x: 58, year: "'12" },
+      { x: 184, year: "'13" }
+    ];
+    for (const b of banners) {
+      ctx.fillStyle = p[12];
+      ctx.fillRect(b.x, 6, 15, 14);
+      ctx.fillStyle = p[15];
+      ctx.fillRect(b.x + 2, 7, 11, 2);
+      ctx.fillRect(b.x + 2, 10, 11, 7);
+      ctx.fillStyle = p[3];
+      ctx.font = '5px monospace';
+      ctx.fillText(b.year, b.x + 2, 16);
+      ctx.beginPath();
+      ctx.moveTo(b.x, 20);
+      ctx.lineTo(b.x + 7.5, 23);
+      ctx.lineTo(b.x + 15, 20);
+      ctx.fillStyle = p[12];
+      ctx.fill();
+    }
+
+    // 2. Pixelated Miami Heat Arena Crowd (y: 16..38)
+    const crowdRows = [
+      { y: 17, color: p[8] },
+      { y: 22, color: p[15] },
+      { y: 27, color: p[0] },
+      { y: 32, color: p[1] }
+    ];
+    const fanShirtPalette = [p[15], p[0], p[12], p[3], p[1]];
+
+    for (let rowIdx = 0; rowIdx < crowdRows.length; rowIdx++) {
+      const row = crowdRows[rowIdx];
+      ctx.fillStyle = p[0];
+      ctx.fillRect(0, row.y, WIDTH, 5);
+
+      for (let x = 2; x < WIDTH; x += 5) {
+        const hash = (x * 7 + rowIdx * 13) % fanShirtPalette.length;
+        const shirtColor = fanShirtPalette[hash];
+        const headColor = p[7];
+
+        ctx.fillStyle = headColor;
+        ctx.fillRect(x + 1, row.y, 2, 2);
+        ctx.fillStyle = shirtColor;
+        ctx.fillRect(x, row.y + 2, 4, 3);
+      }
+    }
+
+    // Dynamic Crowd Camera Flashes
+    for (const f of this.flashes) {
+      ctx.fillStyle = p[4];
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = p[12];
+      ctx.fillRect(Math.round(f.x - 1), Math.round(f.y - 1), 2, 2);
+    }
+
+    // 3. LED Arena Ribbon Board (y: 38..48)
+    ctx.fillStyle = p[0];
+    ctx.fillRect(0, 38, WIDTH, 10);
+    ctx.fillStyle = p[15];
+    ctx.fillRect(0, 38, WIDTH, 1);
+    ctx.fillRect(0, 47, WIDTH, 1);
+
+    const message = "  ★ MIAMI HEAT ★ HEAT CULTURE ★ KASEYA CENTER ★ DEFENSE! ★ LET'S GO HEAT! ★  ";
+    ctx.fillStyle = p[3];
+    ctx.font = 'bold 7px monospace';
+    const msgW = ctx.measureText(message).width || 380;
+    const ribbonX = -(this.ribbonScroll % msgW);
+    ctx.fillText(message, ribbonX, 45);
+    ctx.fillText(message, ribbonX + msgW, 45);
+
+    // 4. Parquet Hardwood Basketball Court (y: 48..136)
+    const courtY = 48;
+    const courtH = HEIGHT - courtY;
+
+    // Wood floor base
+    ctx.fillStyle = p[5];
+    ctx.fillRect(0, courtY, WIDTH, courtH);
+
+    // Parquet horizontal wood plank strips
+    const plankH = 6;
+    for (let py = courtY; py < HEIGHT; py += plankH) {
+      const plankIdx = Math.floor((py - courtY) / plankH);
+      ctx.fillStyle = plankIdx % 2 === 0 ? p[6] : p[5];
+      ctx.fillRect(0, py, WIDTH, plankH);
+
+      const plankOffset = ((plankIdx * 37 - this.scrollX) % 32 + 32) % 32;
+      ctx.fillStyle = p[0];
+      for (let px = plankOffset; px < WIDTH; px += 32) {
+        ctx.fillRect(px, py, 1, plankH);
+      }
+    }
+
+    // Court Sideline Borders
+    ctx.fillStyle = p[15];
+    ctx.fillRect(0, courtY, WIDTH, 2);
+    ctx.fillStyle = p[3];
+    ctx.fillRect(0, courtY + 2, WIDTH, 1);
+
+    // Scrolling Center Court Line & Miami Heat Flaming Ball Logo
+    const logoX = ((360 - this.scrollX * 0.8) % 320 + 320) % 320 - 40;
+    const logoY = 92;
+
+    ctx.strokeStyle = p[12];
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.ellipse(logoX, logoY, 26, 14, 0, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Center Court Miami Heat Flaming Basketball Logo
+    ctx.fillStyle = p[15];
+    ctx.beginPath();
+    ctx.moveTo(logoX - 18, logoY + 2);
+    ctx.lineTo(logoX - 4, logoY - 10);
+    ctx.lineTo(logoX + 12, logoY);
+    ctx.lineTo(logoX - 2, logoY + 6);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = p[3];
+    ctx.beginPath();
+    ctx.moveTo(logoX - 12, logoY + 2);
+    ctx.lineTo(logoX - 2, logoY - 6);
+    ctx.lineTo(logoX + 8, logoY);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = p[12];
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.ellipse(logoX + 2, logoY, 9, 5, 0, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+}
+
 
 /**
  * Radial anime focus lines radiating from a focal point (cxong/Dunkman `Focuslines`).
@@ -333,6 +547,7 @@ export class DunkmanEngine {
     this.audio = options.audio || new DunkmanAudio();
     this.onHudUpdate = options.onHudUpdate || null;
 
+    this.arena = new PixelArena();
     this.speedlines = new Speedlines();
     this.focuslines = new Focuslines(CENTERX, 58);
 
@@ -591,6 +806,7 @@ export class DunkmanEngine {
 
     // Main 'GAME' state
     this.ticks += 1;
+    this.arena.tick();
     this.speedlines.tick();
 
     if (this.mode === 'ATTRACT') {
@@ -784,8 +1000,9 @@ export class DunkmanEngine {
       return;
     }
 
-    // Render 'GAME' State
-    this.speedlines.draw(ctx, p);
+    // Render 'GAME' State with Retro Miami Heat Arena Background
+    this.arena.draw(ctx, p);
+    this.speedlines.drawStreaks(ctx, p);
 
     // 2-frame running torso animation toggling every 10 ticks
     const runFrame = Math.floor(this.ticks / 10) % 2;

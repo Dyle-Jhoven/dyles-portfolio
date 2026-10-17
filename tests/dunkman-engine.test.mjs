@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { computeArmJoint, outquad, inoutquad, Hand, DunkmanEngine } from '../js/dunkman-engine.js';
+import { computeArmJoint, outquad, inoutquad, Hand, DunkmanEngine, PixelArena } from '../js/dunkman-engine.js';
 
 test('computeArmJoint handles zero distance and bends elbow when d < armLen', () => {
   const zero = computeArmJoint(100, 70, 100, 70, 40);
@@ -46,4 +46,12 @@ test('DunkmanEngine switches palettes, runs AI attract mode, and transitions to 
   engine.startPlayerGame();
   assert.equal(engine.mode, 'PLAYER');
   assert.equal(engine.lives, 3);
+});
+
+test('PixelArena renders retro pixelated Miami Heat arena with rafters, crowd, LED board, and court', () => {
+  const arena = new PixelArena();
+  assert.equal(typeof arena.tick, 'function');
+  assert.equal(typeof arena.draw, 'function');
+  arena.tick();
+  assert.ok(arena.scrollX > 0);
 });

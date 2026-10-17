@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DYLE #3 | Miami Heat Portfolio — Computer Engineering &amp; Game Dev</title>
+    <meta
+      name="description"
+      content="Portfolio of Dyle (#3), Computer Engineering Student & Junior Game Developer. Features a playable Miami Heat edition of the retro TIC-80 basketball game Dunkman."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- Top Broadcast Ticker -->
+    <div class="arena-ticker" role="region" aria-label="Live Arena Broadcast Ticker">
+      <div class="arena-ticker__inner">
+        <span class="ticker-pill">LIVE FROM KASEYA CENTER LAB</span>
+        <span class="ticker-item">🔥 PLAYER: <strong>DYLE (#3)</strong> — B.S. COMPUTER ENGINEERING &amp; JR. GAME DEVELOPER</span>
+        <span class="ticker-sep">///</span>
+        <span class="ticker-item">🏀 FEATURED ENGINE: <strong>DUNKMAN 240×136</strong> (PROCEDURAL 2D IK + 16-COLOR SHADER)</span>
+        <span class="ticker-sep">///</span>
+        <span class="ticker-item">⚡ STATUS: <strong>OPEN FOR GAME DEV &amp; EMBEDDED SYSTEMS ROLES</strong></span>
+      </div>
+    </div>
+
+    <!-- Sticky Arena Scoreboard Navbar -->
+    <header class="scoreboard-header">
+      <div class="container scoreboard-header__inner">
+        <a href="#hero-arena" class="brand-lockup" aria-label="Dyle #3 Home Court">
+          <span class="brand-lockup__jersey">#3</span>
+          <div class="brand-lockup__text">
+            <span class="brand-lockup__name">DYLE</span>
+            <span class="brand-lockup__sub">HEAT CULTURE // CpE &amp; GAME DEV</span>
+          </div>
+        </a>
+
+        <nav class="arena-nav" aria-label="Primary Portfolio Navigation">
+          <a href="#hero-arena" class="arena-nav__link active">01 TIP-OFF</a>
+          <a href="#scouting-report" class="arena-nav__link">02 SCOUTING REPORT</a>
+          <a href="#highlight-reel" class="arena-nav__link">03 HIGHLIGHT REEL</a>
+          <a href="#season-log" class="arena-nav__link">04 SEASON LOG</a>
+          <a href="#front-office" class="arena-nav__link">05 FRONT OFFICE</a>
+        </nav>
+
+        <div class="header-controls">
+          <button
+            type="button"
+            id="theme-toggle-btn"
+            class="ctrl-pill ctrl-pill--theme"
+            aria-label="Toggle between Classic Heat Culture and Miami Vice Nights court theme"
+          >
+            <span class="ctrl-pill__dot"></span>
+            <span id="theme-toggle-label">COURT: HEAT CULTURE</span>
+          </button>
+
+          <button
+            type="button"
+            id="audio-toggle-btn"
+            class="ctrl-pill ctrl-pill--audio"
+            aria-pressed="false"
+            aria-label="Toggle 8-bit game sound effects"
+          >
+            <span id="audio-toggle-label">🔇 8-BIT SFX: OFF</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- SECTION 01: ARENA JUMBOTRON HERO & PLAYABLE DUNKMAN BANNER -->
+      <section id="hero-arena" class="hero-section">
+        <div class="court-lines-bg" aria-hidden="true"></div>
+        <div class="container">
+          <!-- Hero Header: Player Identity & Roster Status -->
+          <div class="hero-header-banner">
+            <div class="franchise-kicker">
+              <span class="franchise-kicker__badge">STARTING POINT GUARD // #3</span>
+              <span class="franchise-kicker__team" id="hero-team-label">MIAMI HEAT DEV ROSTER</span>
+              <span class="shot-clock-tag">SHOT CLOCK 25.0</span>
+            </div>
+
+            <h1 class="hero-title">
+              <span class="hero-title__name" id="hero-player-name">DYLE</span>
+              <span class="hero-title__role" id="hero-player-role">
+                COMPUTER ENGINEERING &amp; GAME DEVELOPER
+              </span>
+            </h1>
+
+            <p class="hero-tagline" id="hero-player-tagline">
+              Building frame-perfect interactive games, low-level hardware systems, and high-voltage web experiences with Miami Heat intensity.
+            </p>
+          </div>
+
+          <!-- THE RETRO GAME BANNER (Centerpiece of Introduction Page) -->
+          <div class="hero-banner-showcase">
+            <div class="jumbotron-cabinet jumbotron-cabinet--banner">
+              <!-- Jumbotron Top Bezel -->
+              <div class="jumbotron-bezel-top">
+                <div class="bezel-brand">
+                  <span class="bezel-status-dot"></span>
+                  <span class="jumbotron-title">
+                    🏀 RETRO GAME BANNER: DUNKMAN (MIAMI HEAT 240×136 TIC-80 PORT)
+                  </span>
+                </div>
+                <div class="bezel-actions">
+                  <button type="button" id="cabinet-play-btn" class="bezel-btn bezel-btn--accent">
+                    ▶ PLAY BANNER
+                  </button>
+                  <button type="button" id="cabinet-ai-btn" class="bezel-btn">
+                    🤖 AI DEMO
+                  </button>
+                  <button type="button" id="cabinet-expand-btn" class="bezel-btn">
+                    ⛶ FULL FOCUS
+                  </button>
+                </div>
+              </div>
+
+              <!-- 16:9 Pixel-Art Canvas Banner Viewport -->
+              <div class="canvas-stage canvas-stage--banner" id="canvas-stage">
+                <canvas
+                  id="dunkman-canvas"
+                  width="240"
+                  height="136"
+                  tabindex="0"
+                  aria-label="Playable Dunkman Miami Heat Retro Basketball Game Banner"
+                ></canvas>
+
+                <!-- Floating Quick-Start Prompt when in AI Attract Mode -->
+                <div id="attract-overlay" class="attract-overlay">
+                  <div class="attract-overlay__pill">
+                    <span class="attract-badge">IDLE AI DEMO</span>
+                    <span>CLICK OR MOVE / PRESS WASD / ARROWS TO CONTROL DYLE #3</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Jumbotron Lower HUD & Controls Strip -->
+              <div class="banner-bottom-strip">
+                <!-- Live Synced LED Arena Scoreboard Telemetry -->
+                <div class="live-scoreboard" aria-label="Live Dunkman Game Telemetry">
+                  <div class="live-scoreboard__top">
+                    <span class="live-scoreboard__title">
+                      <span class="pulse-led"></span> JUMBOTRON TELEMETRY
+                    </span>
+                    <span id="hud-mode-badge" class="hud-mode-badge">AI ATTRACT DEMO</span>
+                  </div>
+
+                  <div class="live-scoreboard__stats">
+                    <div class="led-box">
+                      <span class="led-box__label">DUNKING METER</span>
+                      <span id="hud-percent" class="led-box__value">0.0%</span>
+                      <div class="dunk-progress-track">
+                        <div id="hud-progress-fill" class="dunk-progress-fill" style="width: 0%"></div>
+                      </div>
+                    </div>
+
+                    <div class="led-box">
+                      <span class="led-box__label">BALL SECURITY</span>
+                      <span id="hud-lives" class="led-box__value led-box__value--balls">🏀 🏀 🏀</span>
+                      <span id="hud-state-text" class="led-box__sub">FAST BREAK ACTIVE</span>
+                    </div>
+
+                    <div class="led-box">
+                      <span class="led-box__label">DUNK STREAK</span>
+                      <span id="hud-streak" class="led-box__value">0</span>
+                      <span id="hud-best" class="led-box__sub">BEST: 0%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Octant Pad & Instructions -->
+                <div class="banner-controls-panel">
+                  <div class="deck-instructions">
+                    <span class="deck-instructions__title">HOW TO PLAY THE BANNER:</span>
+                    <p class="deck-instructions__copy">
+                      Hold <strong>WASD</strong>, <strong>Arrow Keys</strong>, or <strong>Move Cursor / Touch</strong> across the canvas to protect the ball across <strong>8 radial guard octants</strong> from swiping defenders until <strong>DUNKING hits 100%</strong>!
+                    </p>
+                    <div class="hero-cta-row" style="margin-top: 0.75rem">
+                      <button type="button" id="hero-play-btn" class="btn btn--primary">
+                        🏀 PLAY NOW
+                      </button>
+                      <button type="button" id="hero-theater-btn" class="btn btn--secondary">
+                        ⛶ FULLSCREEN FOCUS
+                      </button>
+                      <a href="#highlight-reel" class="btn btn--ghost">
+                        EXPLORE WORK ↓
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Interactive 8-Direction Octant Guard Pad -->
+                  <div class="octant-pad" aria-label="8-Direction Ball Guard Control Pad">
+                    <button type="button" class="oct-btn" data-dx="-1" data-dy="-1" aria-label="Guard Top Left">↖</button>
+                    <button type="button" class="oct-btn" data-dx="0" data-dy="-1" aria-label="Guard Top">↑</button>
+                    <button type="button" class="oct-btn" data-dx="1" data-dy="-1" aria-label="Guard Top Right">↗</button>
+                    <button type="button" class="oct-btn" data-dx="-1" data-dy="0" aria-label="Guard Left">←</button>
+                    <button type="button" class="oct-btn oct-btn--center" data-dx="0" data-dy="0" aria-label="Guard Center">🏀</button>
+                    <button type="button" class="oct-btn" data-dx="1" data-dy="0" aria-label="Guard Right">→</button>
+                    <button type="button" class="oct-btn" data-dx="-1" data-dy="1" aria-label="Guard Bottom Left">↙</button>
+                    <button type="button" class="oct-btn" data-dx="0" data-dy="1" aria-label="Guard Bottom">↓</button>
+                    <button type="button" class="oct-btn" data-dx="1" data-dy="1" aria-label="Guard Bottom Right">↘</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 02: SCOUTING REPORT (ABOUT & SKILL ATTRIBUTES) -->
+      <section id="scouting-report" class="portfolio-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-header__meta">
+              <span class="section-index">02 // COMBINE DOSSIER</span>
+              <span class="section-tag">OFFICIAL MIAMI HEAT SCOUTING REPORT</span>
+            </div>
+            <h2 class="section-title">PLAYER PROFILE &amp; SKILL RATINGS</h2>
+          </div>
+
+          <!-- Combine Vitals Strip -->
+          <div id="vitals-grid" class="vitals-grid"></div>
+
+          <!-- Bio + Archetype Card -->
+          <div class="scouting-layout">
+            <article class="dossier-card">
+              <div class="dossier-card__header">
+                <span class="dossier-jersey">#3</span>
+                <div>
+                  <h3 class="dossier-card__name">SCOUTING SUMMARY // DYLE</h3>
+                  <p id="dossier-archetype" class="dossier-card__archetype">
+                    Two-Way Gameplay &amp; Embedded Systems Engineer
+                  </p>
+                </div>
+              </div>
+              <div id="dossier-bio" class="dossier-card__body"></div>
+              <div class="dossier-signature">
+                <div class="signature-item">
+                  <span class="signature-label">REFERENCE ENGINE</span>
+                  <span class="signature-val">cxong/Dunkman (TIC-80 → HTML5 Canvas)</span>
+                </div>
+                <div class="signature-item">
+                  <span class="signature-label">CORE DISCIPLINES</span>
+                  <span class="signature-val">Game Dev • Embedded C/C++ • Digital Logic</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- NBA 2K Style Skill Rating Categories -->
+            <div id="skills-container" class="skills-column"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 03: HIGHLIGHT REEL (PROJECTS & GAMES) -->
+      <section id="highlight-reel" class="portfolio-section portfolio-section--alt">
+        <div class="container">
+          <div class="section-header section-header--split">
+            <div>
+              <div class="section-header__meta">
+                <span class="section-index">03 // GAME TAPE &amp; ENGINEERING BUILDS</span>
+                <span class="section-tag">60 FPS VERIFIED</span>
+              </div>
+              <h2 class="section-title">HIGHLIGHT REEL</h2>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="filter-bar" role="tablist" aria-label="Filter projects by discipline">
+              <button type="button" class="filter-tab active" data-filter="all" role="tab" aria-selected="true">
+                ALL PLAYS (6)
+              </button>
+              <button type="button" class="filter-tab" data-filter="game" role="tab" aria-selected="false">
+                🎮 GAME DEV
+              </button>
+              <button type="button" class="filter-tab" data-filter="cpe" role="tab" aria-selected="false">
+                ⚡ COMPUTER ENG
+              </button>
+              <button type="button" class="filter-tab" data-filter="software" role="tab" aria-selected="false">
+                💻 SOFTWARE &amp; TOOLS
+              </button>
+            </div>
+          </div>
+
+          <div id="projects-grid" class="projects-grid"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 04: SEASON LOG (EDUCATION, GAME JAMS & EXPERIENCE) -->
+      <section id="season-log" class="portfolio-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-header__meta">
+              <span class="section-index">04 // PLAY-BY-PLAY CHRONICLE</span>
+              <span class="section-tag">ACADEMIC &amp; DEV MILESTONES</span>
+            </div>
+            <h2 class="section-title">SEASON LOG</h2>
+          </div>
+
+          <div id="season-timeline" class="season-timeline"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 05: FRONT OFFICE (CONTACT & CONTRACT OFFER) -->
+      <section id="front-office" class="portfolio-section portfolio-section--footer">
+        <div class="container">
+          <div class="front-office-card">
+            <div class="front-office-card__left">
+              <div class="section-header__meta">
+                <span class="section-index">05 // FRONT OFFICE DESK</span>
+                <span class="section-tag">FREE AGENT / DRAFT ELIGIBLE</span>
+              </div>
+              <h2 class="section-title">SIGN DYLE #3 TO YOUR ROSTER</h2>
+              <p class="front-office-copy">
+                Looking for a Junior Game Developer or Computer Engineering intern who can build gameplay systems, write clean C/C++ firmware, and ship interactive web experiences? Send a scouting inquiry directly to the locker room.
+              </p>
+
+              <div class="contact-direct-box">
+                <div class="contact-row">
+                  <span class="contact-row__label">DIRECT COMMS</span>
+                  <code id="contact-email-display" class="contact-row__email">dyle.gamedev@heatculture.dev</code>
+                  <button type="button" id="copy-email-btn" class="bezel-btn bezel-btn--accent">
+                    COPY EMAIL
+                  </button>
+                </div>
+              </div>
+
+              <div class="social-roster-links">
+                <a href="https://github.com/cxong/Dunkman" target="_blank" rel="noopener noreferrer" class="roster-link">
+                  <span>GITHUB // REPOS</span>
+                  <span>↗</span>
+                </a>
+                <a href="https://itch.io/" target="_blank" rel="noopener noreferrer" class="roster-link">
+                  <span>ITCH.IO // ARCADE</span>
+                  <span>↗</span>
+                </a>
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="roster-link">
+                  <span>LINKEDIN // PROFILE</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="front-office-card__right">
+              <form id="contract-form" class="contract-form">
+                <div class="contract-form__header">
+                  <span>OFFICIAL SCOUTING DISPATCH</span>
+                  <span class="shot-clock-tag">SHOT CLOCK READY</span>
+                </div>
+
+                <label class="form-field">
+                  <span class="form-field__label">SCOUT / RECRUITER NAME</span>
+                  <input type="text" name="scoutName" required placeholder="e.g. Coach Spo / Lead Game Producer" />
+                </label>
+
+                <label class="form-field">
+                  <span class="form-field__label">STUDIO OR ORGANIZATION</span>
+                  <input type="email" name="scoutEmail" required placeholder="scout@studio.com" />
+                </label>
+
+                <label class="form-field">
+                  <span class="form-field__label">ROLE / CONTRACT TYPE</span>
+                  <select name="contractType">
+                    <option value="Game Developer Role / Internship">🎮 Junior Game Developer / Internship</option>
+                    <option value="Computer Engineering / Embedded">⚡ Computer Engineering / Embedded Systems</option>
+                    <option value="Creative Frontend / Interactive Web">🏀 Interactive Web / Full-Stack Project</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span class="form-field__label">GAME PLAN / MESSAGE</span>
+                  <textarea
+                    name="message"
+                    rows="3"
+                    required
+                    placeholder="Tell Dyle about your team, engine stack, or upcoming project..."
+                  ></textarea>
+                </label>
+
+                <button type="submit" class="btn btn--primary btn--full">
+                  🚨 SOUND THE BUZZER &amp; SEND OFFER
+                </button>
+
+                <p id="form-status-msg" class="form-status-msg" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="arena-footer">
+      <div class="container arena-footer__inner">
+        <span>© 2026 DYLE (#3) — COMPUTER ENGINEERING &amp; GAME DEVELOPER</span>
+        <span>
+          RETRO BANNER INSPIRED BY
+          <a href="https://github.com/cxong/Dunkman" target="_blank" rel="noopener noreferrer">cxong/Dunkman (TIC-80)</a>
+        </span>
+      </div>
+    </footer>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
