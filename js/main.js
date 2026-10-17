@@ -30,23 +30,20 @@ function renderVitalsAndProfile() {
         <div class="skill-group-card">
           <div class="skill-group-card__top">
             <h3 class="skill-group-card__title">${cat.title}</h3>
-            <span class="ovr-badge">${cat.ovr} OVR // ${cat.badge}</span>
+            <span class="ovr-badge">${cat.badge}</span>
           </div>
-          ${cat.skills
-            .map(
-              (s) => `
-              <div class="skill-row">
-                <div class="skill-row__meta">
-                  <span>${s.name}</span>
-                  <span class="skill-row__rating">${s.rating} OVR [${s.tag}]</span>
+          <div class="skill-items-grid">
+            ${cat.skills
+              .map(
+                (s) => `
+                <div class="skill-item-box">
+                  <div class="skill-item-title">🏀 ${s.name}</div>
+                  <p class="skill-item-desc">${s.desc}</p>
                 </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: ${s.rating}%"></div>
-                </div>
-              </div>
-            `
-            )
-            .join('')}
+              `
+              )
+              .join('')}
+          </div>
         </div>
       `
       )
@@ -78,10 +75,10 @@ function renderProjects(category = 'all') {
           </div>
           <div class="project-card__actions">
             <a href="${proj.demoUrl}" class="bezel-btn bezel-btn--accent" data-project-id="${proj.id}">
-              ${proj.id === 'dunkman-heat' ? '🏀 PLAY ABOVE' : '▶ LIVE DEMO'}
+              ${proj.id === 'dunkman-heat' ? '🏀 PLAY RETRO BANNER' : 'VIEW DETAILS'}
             </a>
-            <a href="${proj.repoUrl}" target="_blank" rel="noopener noreferrer" class="bezel-btn">
-              SOURCE CODE ↗
+            <a href="${proj.repoUrl}" class="bezel-btn" ${proj.repoUrl.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+              ${proj.repoUrl.startsWith('http') ? 'SOURCE / REF ↗' : 'CONTACT DYLE'}
             </a>
           </div>
         </div>
@@ -104,7 +101,7 @@ function renderSeasonLog() {
           <span>${item.period}</span>
         </div>
         <h3 class="season-card__title">${item.title}</h3>
-        <div class="season-card__org">${item.org} • [${item.badge}]</div>
+        <div class="season-card__org">${item.org} [${item.badge}]</div>
         <ul class="season-card__list">
           ${item.highlights.map((h) => `<li>${h}</li>`).join('')}
         </ul>
@@ -145,7 +142,7 @@ function initPortfolioApp() {
           GAME: '⚡ FAST BREAK GUARDING',
           HOOP: '🚀 ELEVATING TO THE RIM',
           SLAM: '💥 KABOOM! SLAM DUNK!',
-          LOSE: '🚨 BALL STOLEN — RUNNING IT BACK'
+          LOSE: '🚨 BALL STOLEN : RUNNING IT BACK'
         };
         hudStateText.textContent = labels[hud.state] || hud.state;
       }
@@ -333,13 +330,13 @@ function initPortfolioApp() {
     });
   });
 
-  // Copy Email Button
+  // Copy Contact Phone Button
   const copyBtn = document.getElementById('copy-email-btn');
   copyBtn?.addEventListener('click', () => {
-    navigator.clipboard?.writeText(PORTFOLIO_DATA.socials.email).catch(() => {});
-    copyBtn.textContent = '✓ COPIED TO CLIPBOARD';
+    navigator.clipboard?.writeText(PORTFOLIO_DATA.personalInfo.contactNo).catch(() => {});
+    copyBtn.textContent = '✓ COPIED PHONE NO.';
     setTimeout(() => {
-      copyBtn.textContent = 'COPY EMAIL';
+      copyBtn.textContent = 'COPY PHONE';
     }, 2000);
   });
 

@@ -1,64 +1,126 @@
 export const PORTFOLIO_DATA = {
   player: {
     name: 'DYLE',
-    fullName: 'Dyle — Computer Engineering & Game Dev',
+    fullName: 'Dyle Jhoven E. Payla',
     number: '#3',
-    position: 'COMPUTER ENGINEERING STUDENT / JR. GAME DEVELOPER',
-    team: 'MIAMI HEAT DEV ROSTER',
-    archetype: 'Two-Way Gameplay & Embedded Systems Engineer',
+    position: 'SPORTS HUB PERSONNEL / BASKETBALL OFFICIAL / COMPUTER TECH',
+    team: 'ANTIPOLO SPORTS HUB & ICCT',
+    archetype: 'Basketball Operations, Game Officiating & Creative Computer Tech',
     tagline:
-      'Building frame-perfect interactive games, low-level hardware systems, and high-voltage web experiences with Miami Heat intensity.',
-    status: 'AVAILABLE FOR INTERNSHIPS & GAME DEV ROLES',
-    location: 'Home Court // Engineering Lab',
+      'Antipolo City Sports Hub personnel and experienced basketball official with a foundation in creative computer technology from ICCT.',
+    status: 'ACTIVE AT ANTIPOLO SPORTS HUB // OPEN FOR OPPORTUNITIES',
+    location: 'Barangay San Roque, Antipolo City',
+    contactNumber: '09184511708',
+    age: 23,
+    address: 'Blk 10 Lot 9 Marigman Street, Golden Hills, Barangay San Roque, Antipolo City',
+    references: 'Available upon request',
     bio: [
-      "I'm Dyle, a Computer Engineering student and Junior Game Developer obsessed with how games and machines work from the silicon up to the screen. Whether I'm writing custom 60FPS state machines, inverse-kinematic procedural animations, or programming microcontrollers in C/C++, I bring championship-level polish to every build.",
-      'Inspired by classic 16-bit arcade action and Miami Heat Culture, my work bridges tight gameplay feel with solid systems architecture—turning hardware constraints and pixel grids into unforgettable player experiences.'
+      'My name is Dyle Jhoven E. Payla. I am 23 years old from Antipolo City. Currently, I work on a job order basis at the Antipolo City Sports Hub, where I support daily facility operations, coordinate activities, and ensure that tournaments and sporting events run smoothly.',
+      'On the court, I am an experienced basketball referee skilled in officiating games under pressure. I apply basketball rules, fouls, and violations consistently, make quick and fair calls, execute official signals, and maintain positive game flow.',
+      'Alongside my sports operations work, I studied at the Institute of Creative Computer Technology (ICCT). I am computer literate, comfortable with digital software and computer systems, and passionate about interactive technology including retro game engines.'
     ]
   },
 
   vitals: [
-    { label: 'JERSEY', value: '#3', sub: 'Franchise Playmaker' },
-    { label: 'DEGREE', value: 'B.S. CpE', sub: 'Computer Engineering' },
-    { label: 'ROLE', value: 'JR. GAME DEV', sub: 'Gameplay & Systems' },
-    { label: 'FRAME TARGET', value: '60 FPS', sub: 'Zero Frame Drops' },
-    { label: 'SPECIALTY', value: 'IK & PIXEL', sub: 'Procedural Engines' },
-    { label: 'COURT MODE', value: 'HEAT / VICE', sub: 'Dual 16-Color Shader' }
+    { label: 'FULL NAME', value: 'DYLE PAYLA', sub: 'Dyle Jhoven E. Payla' },
+    { label: 'AGE', value: '23 YEARS', sub: 'Antipolo City, Rizal' },
+    { label: 'WORK', value: 'SPORTS HUB', sub: 'Antipolo City Sports Hub' },
+    { label: 'OFFICIATING', value: 'REFEREE', sub: 'Basketball Game Official' },
+    { label: 'COLLEGE', value: 'ICCT', sub: 'Creative Computer Tech' },
+    { label: 'CONTACT', value: '09184511708', sub: 'Call / SMS Direct' }
   ],
 
   skillCategories: [
     {
-      id: 'gamedev',
-      title: 'GAME DEVELOPMENT & GRAPHICS',
-      badge: 'OFFENSIVE PACKAGE',
-      ovr: 94,
+      id: 'officiating',
+      title: 'BASKETBALL OFFICIATING & GAME MANAGEMENT',
+      badge: 'COURT ARBITRATION',
       skills: [
-        { name: 'HTML5 Canvas / Pixel & Procedural Engines', rating: 96, tag: 'SIGNATURE MOVE' },
-        { name: 'Unity (C#) & Godot (GDScript / C++)', rating: 93, tag: 'STARTER' },
-        { name: 'Gameplay State Machines, Physics & 2D IK', rating: 95, tag: 'PLAYMAKER' },
-        { name: 'Custom Shaders, Palettes & Particle Juice', rating: 91, tag: 'HIGHLIGHT' }
+        {
+          name: 'Basketball Rules & Regulations',
+          desc: 'Thorough knowledge of official rules, fouls, and violations with consistent application across all quarters.'
+        },
+        {
+          name: 'Decisive Calls Under Pressure',
+          desc: 'Makes fast, fair, and impartial referee calls in intense game situations.'
+        },
+        {
+          name: 'Officiating Signals & Mechanics',
+          desc: 'Uses standardized referee hand signals to communicate clearly with table officials and players.'
+        },
+        {
+          name: 'Game Flow & Pace Control',
+          desc: 'Manages game tempo, dead-ball intervals, and maintains court discipline.'
+        }
       ]
     },
     {
-      id: 'cpe',
-      title: 'COMPUTER ENGINEERING & HARDWARE',
-      badge: 'DEFENSIVE ANCHOR',
-      ovr: 92,
+      id: 'operations',
+      title: 'SPORTS FACILITY & EVENT OPERATIONS',
+      badge: 'VENUE COORDINATION',
       skills: [
-        { name: 'C / C++ & Memory-Safe Low-Level Systems', rating: 94, tag: 'LOCKDOWN' },
-        { name: 'Microcontrollers (ESP32, Arduino, STM32)', rating: 92, tag: 'HARDWARE' },
-        { name: 'Digital Logic, Verilog/FPGA & Computer Arch', rating: 90, tag: 'SILICON' },
-        { name: 'Embedded Displays, Sensors & Serial Protocols', rating: 91, tag: 'TELEMETRY' }
+        {
+          name: 'Daily Facility Operations',
+          desc: 'Job order personnel supporting sports facility operations at Antipolo City Sports Hub.'
+        },
+        {
+          name: 'Activity & Court Scheduling',
+          desc: 'Coordinates court use, team practices, and organized community tournament bookings.'
+        },
+        {
+          name: 'Game Equipment & Scoreboard Support',
+          desc: 'Assists with arena equipment setup, digital scoreboards, shot clocks, and court readiness.'
+        },
+        {
+          name: 'Facility Organization & Safety',
+          desc: 'Maintains clean, orderly, and secure athletic areas for players and guests.'
+        }
       ]
     },
     {
-      id: 'software',
-      title: 'SOFTWARE & FULL-STACK ENGINEERING',
-      badge: 'FLOOR GENERAL',
-      ovr: 91,
+      id: 'technology',
+      title: 'COMPUTER LITERACY & DIGITAL TECHNOLOGY',
+      badge: 'TECHNICAL PROFICIENCY',
       skills: [
-        { name: 'JavaScript (ES6+) / TypeScript & Web Audio API', rating: 94, tag: 'CLUTCH' },
-        { name: 'Python (Tooling, Asset Pipelines, RLE Encoders)', rating: 92, tag: 'UTILITY' },
-        { name: 'Data Structures, Algorithms & Git Workflows', rating: 90, tag: 'FUNDAMENTALS' }
+        {
+          name: 'Computer Literacy & Common Software',
+          desc: 'Skilled in computer operations, productivity tools, document handling, and digital data management.'
+        },
+        {
+          name: 'ICCT Coursework & Studies',
+          desc: 'Studied at the Institute of Creative Computer Technology with a focus on computing systems.'
+        },
+        {
+          name: 'Interactive Web & Retro Game Engines',
+          desc: 'Hands-on experience building web interfaces and retro canvas games like the Miami Heat Dunkman banner.'
+        },
+        {
+          name: 'Hardware & Systems Troubleshooting',
+          desc: 'Basic computer hardware setup, peripheral management, and operational troubleshooting.'
+        }
+      ]
+    },
+    {
+      id: 'communication',
+      title: 'COMMUNICATION & TEAM COLLABORATION',
+      badge: 'INTERPERSONAL SKILLS',
+      skills: [
+        {
+          name: 'Clear & Respectful Communication',
+          desc: 'Communicates effectively with players, coaches, customers, supervisors, and co-workers.'
+        },
+        {
+          name: 'Calm Demeanor in Tense Moments',
+          desc: 'De-escalates heated disputes and maintains composure during high-pressure situations.'
+        },
+        {
+          name: 'Teamwork & Shift Reliability',
+          desc: 'Dependable team player with experience covering shifts and assisting across multiple roles.'
+        },
+        {
+          name: 'Customer Service & Hospitality',
+          desc: 'Assists guests and visitors with positive, courteous, and professional attention.'
+        }
       ]
     }
   ],
@@ -66,155 +128,163 @@ export const PORTFOLIO_DATA = {
   projects: [
     {
       id: 'dunkman-heat',
-      title: 'DUNKMAN: MIAMI HEAT EDITION',
+      title: 'DUNKMAN: MIAMI HEAT 240x136 RETRO ENGINE',
       category: 'game',
-      categoryLabel: 'GAME DEV // ARCADE ENGINE',
+      categoryLabel: 'INTERACTIVE GAME ENGINE',
       number: 'PLAY #01',
       year: '2026',
       featured: true,
-      statLine: '240×136 PX • 60 FPS • 16-COLOR PALETTE',
+      statLine: '240x136 PX : 60 FPS : 16-COLOR PALETTE',
       summary:
-        'A faithful HTML5 Canvas remake of cxong/Dunkman re-engineered for the Miami Heat. Features procedural 2-segment inverse-kinematic arms, elliptical defender swipe patterns, anime speedlines, AI attract mode, and live Classic/Vice palette swapping.',
+        'A retro HTML5 Canvas basketball minigame inspired by cxong/Dunkman on TIC-80. Features procedural 2-segment inverse-kinematic arms, 8-directional ball protection, swiping defender arms, speedlines, audio synthesizer, and dual-court Classic/Vice palette switching.',
       tech: ['HTML5 Canvas', 'Procedural 2D IK', 'State Machine', 'Web Audio Synth'],
       artStyle: 'dunkman',
       demoUrl: '#hero-arena',
       repoUrl: 'https://github.com/cxong/Dunkman'
     },
     {
-      id: 'esp32-pocket-arcade',
-      title: 'HEATWAVE POCKET ARCADE CABINET',
+      id: 'sports-hub-operations',
+      title: 'ANTIPOLO CITY SPORTS HUB FACILITY OPERATIONS',
       category: 'cpe',
-      categoryLabel: 'COMPUTER ENG // EMBEDDED',
+      categoryLabel: 'FACILITY OPERATIONS',
       number: 'PLAY #02',
       year: '2026',
       featured: true,
-      statLine: 'ESP32-S3 • SPI TFT 60HZ • C++ FIRMWARE',
+      statLine: 'ANTIPOLO CITY SPORTS HUB : ACTIVE JOB ORDER',
       summary:
-        'Custom handheld retro console powered by a dual-core ESP32-S3 driving a 320×240 ILI9341 SPI display via DMA double-buffering, tactile microswitch joystick, and PWM piezo chiptune audio.',
-      tech: ['C/C++', 'ESP32-S3', 'DMA SPI', 'PCB Design', 'FreeRTOS'],
+        'Active operational support at the Antipolo City Sports Hub. Responsibilities include daily sports facility management, maintaining court readiness, supporting event logistics, and assisting players, tournament organizers, and visitors.',
+      tech: ['Sports Facility Operations', 'Venue Coordination', 'Event Logistics', 'Court Management'],
       artStyle: 'hardware',
-      demoUrl: '#highlight-reel',
-      repoUrl: 'https://github.com/'
+      demoUrl: '#season-log',
+      repoUrl: '#front-office'
     },
     {
-      id: 'vice-drift-racers',
-      title: 'VICE NIGHTS: OUTRUN DRIFT 16-BIT',
-      category: 'game',
-      categoryLabel: 'GAME DEV // PSEUDO-3D',
-      number: 'PLAY #03',
-      year: '2025',
-      featured: true,
-      statLine: 'SCANLINE RASTER • CUSTOM PHYSICS • GODOT/JS',
-      summary:
-        'Arcade synthwave street racer set in neon Miami featuring scanline road projection, drift boost telemetry, dynamic synthwave stems, and ghost replay serialization.',
-      tech: ['Godot 4', 'GDScript', 'Custom Shaders', 'Arcade Physics'],
-      artStyle: 'vice',
-      demoUrl: '#highlight-reel',
-      repoUrl: 'https://github.com/'
-    },
-    {
-      id: 'riscv-cpu-core',
-      title: '5-STAGE PIPELINED RISC-V PROCESSOR',
+      id: 'basketball-officiating',
+      title: 'BASKETBALL GAME OFFICIATING & RULES ENFORCEMENT',
       category: 'cpe',
-      categoryLabel: 'COMPUTER ENG // ARCHITECTURE',
+      categoryLabel: 'GAME ARBITRATION',
+      number: 'PLAY #03',
+      year: '2026',
+      featured: true,
+      statLine: 'OFFICIAL REFEREE : RULES & VIOLATIONS : SIGNALS',
+      summary:
+        'Experienced on-court basketball officiating. Enforces FIBA and local tournament regulations, identifies fouls and violations accurately, makes quick decisions under pressure, and communicates using standardized referee signals.',
+      tech: ['Rules Enforcement', 'Game Officiating', 'Conflict Resolution', 'Pace Control'],
+      artStyle: 'vice',
+      demoUrl: '#season-log',
+      repoUrl: '#front-office'
+    },
+    {
+      id: 'icct-tech-lab',
+      title: 'ICCT COMPUTER TECHNOLOGY & LITERACY LAB',
+      category: 'software',
+      categoryLabel: 'COMPUTER TECHNOLOGY',
       number: 'PLAY #04',
       year: '2025',
       featured: false,
-      statLine: 'VERILOG HDL • HAZARD UNIT • FPGA SYNTH',
+      statLine: 'ICCT COLLEGES : COMPUTER SYSTEMS : PRODUCTIVITY',
       summary:
-        'Designed and verified a 32-bit RV32I 5-stage pipelined processor with data forwarding, branch prediction, and memory-mapped GPIO/VGA output on an Artix-7 FPGA board.',
-      tech: ['Verilog', 'FPGA', 'RISC-V RV32I', 'Digital Logic'],
-      artStyle: 'silicon',
-      demoUrl: '#highlight-reel',
-      repoUrl: 'https://github.com/'
-    },
-    {
-      id: 'pixel-rle-pipeline',
-      title: 'TIC-80 / RETRO CARTRIDGE ASSET COMPILER',
-      category: 'software',
-      categoryLabel: 'SOFTWARE // GAME TOOLING',
-      number: 'PLAY #05',
-      year: '2025',
-      featured: false,
-      statLine: 'PYTHON CLI • RLE COMPRESSION • PALETTE QUANT',
-      summary:
-        'Automated sprite-sheet quantizer and Run-Length Encoding (RLE) packer inspired by TIC-80 cartridge constraints, shrinking full-screen pixel art animations by 78%.',
-      tech: ['Python', 'RLE Compression', 'Image Processing', 'CLI Tooling'],
+        'Computer technology and literacy training at the Institute of Creative Computer Technology (ICCT). Covers operating systems, office applications, digital tournament records, computer maintenance, and interactive web tools.',
+      tech: ['Computer Literacy', 'Productivity Software', 'Digital Workflows', 'ICCT Studies'],
       artStyle: 'tooling',
-      demoUrl: '#highlight-reel',
-      repoUrl: 'https://github.com/'
+      demoUrl: '#scouting-report',
+      repoUrl: '#front-office'
     },
     {
-      id: 'shotclock-telemetry',
-      title: 'ARENA SHOT-CLOCK & TELEMETRY HUD',
-      category: 'software',
-      categoryLabel: 'SOFTWARE // REALTIME WEB',
-      number: 'PLAY #06',
+      id: 'retro-pixel-arena',
+      title: 'RETRO 16-COLOR MIAMI HEAT ARENA SYSTEM',
+      category: 'game',
+      categoryLabel: 'PIXEL ART GRAPHICS',
+      number: 'PLAY #05',
       year: '2026',
       featured: false,
-      statLine: 'WEBSOCKETS • ZERO-DEPS • SUB-16MS SYNC',
+      statLine: '16 COLORS : RAFTERS : CHAMPIONSHIP BANNERS : SCANLINES',
       summary:
-        'Real-time basketball analytics and hardware scoreboard controller with LED matrix serialization, shot-chart heatmaps, and frame-accurate clock synchronization.',
-      tech: ['JavaScript ES6+', 'Canvas 2D', 'WebSockets', 'Serial API'],
+        'Procedural pixel-art arena rendering engine featuring Miami Heat championship banners (06, 12, 13), dynamic crowd with camera flashes, scrolling LED ribbon board, and a parquet court with the flaming ball insignia.',
+      tech: ['Procedural Pixel Art', 'Indexed Palette Swap', 'CRT Scanlines', 'Canvas 2D'],
+      artStyle: 'silicon',
+      demoUrl: '#hero-arena',
+      repoUrl: 'https://github.com/cxong/Dunkman'
+    },
+    {
+      id: 'bakery-reliever-operations',
+      title: 'RETAIL SHIFT RELIEVER & CUSTOMER SERVICE',
+      category: 'software',
+      categoryLabel: 'CUSTOMER SERVICE & WORK HISTORY',
+      number: 'PLAY #06',
+      year: '2020',
+      featured: false,
+      statLine: '6-MONTH TENURE : SHIFT COVERAGE : AREA HYGIENE',
+      summary:
+        'Six-month work experience as a reliever in a busy bakery shop. Handled customer service with courteous communication, covered varied shifts reliably, assisted with daily bakery tasks, and maintained a clean, organized work station.',
+      tech: ['Customer Service', 'Shift Assistance', 'Workplace Organization', 'Cash & Orders'],
       artStyle: 'telemetry',
-      demoUrl: '#highlight-reel',
-      repoUrl: 'https://github.com/'
+      demoUrl: '#season-log',
+      repoUrl: '#front-office'
     }
   ],
 
   seasonLog: [
     {
-      quarter: 'Q4 // CURRENT SEASON',
-      period: '2025 — PRESENT',
-      title: 'JUNIOR GAME DEVELOPER & INDIE ENGINE BUILDER',
-      org: 'Interactive Arcade & Gameplay Lab',
+      quarter: 'CURRENT TENURE',
+      period: 'SEPTEMBER 2026 - PRESENT',
+      title: 'JOB ORDER PERSONNEL',
+      org: 'Antipolo City Sports Hub',
       highlights: [
-        'Architected playable retro web games with procedural 2D inverse kinematics, custom collision broadphases, and 16-color indexed shaders.',
-        'Built zero-dependency Web Audio API chiptune synthesizers and asset compression pipelines for instant browser boot times.'
+        'Currently working on a job order basis supporting daily sports facility operations at the Antipolo City Sports Hub.',
+        'Assists with court schedules, equipment preparation, visitor inquiries, and tournament logistics to keep sports activities running smoothly.'
       ],
-      badge: 'STARTING LINEUP'
+      badge: 'ACTIVE ROLE'
     },
     {
-      quarter: 'Q3 // HARDWARE & SILICON RUN',
-      period: '2024 — PRESENT',
-      title: 'B.S. IN COMPUTER ENGINEERING',
-      org: 'College of Engineering — Embedded & Architecture Track',
+      quarter: 'COLLEGE EDUCATION',
+      period: 'HIGHER EDUCATION',
+      title: 'COMPUTER TECHNOLOGY STUDIES',
+      org: 'Institute of Creative Computer Technology (ICCT)',
       highlights: [
-        'Hands-on coursework and lab leadership in Microprocessors, Digital Logic Design, Embedded C/C++, Computer Networks, and Operating Systems.',
-        'Developed DMA-driven SPI game displays on ESP32 and synthesized custom RISC-V logic modules on FPGA hardware.'
+        'Studied computer literacy, information technology fundamentals, office applications, and digital systems.',
+        'Applied computing knowledge toward building interactive web projects, portfolio systems, and digital records management.'
       ],
-      badge: 'HONOR ROLL'
+      badge: 'COLLEGE'
     },
     {
-      quarter: 'Q2 // GAME JAM PLAYOFFS',
-      period: '2024 — 2025',
-      title: 'GAME JAM COMPETITOR & SYSTEMS PROGRAMMER',
-      org: 'Ludum Dare / itch.io Community Jams',
+      quarter: 'WORK EXPERIENCE',
+      period: 'OCTOBER 2019 - MARCH 2020',
+      title: 'RELIEVER & CUSTOMER SERVICE',
+      org: 'Bakery Shop (6 Months)',
       highlights: [
-        'Shipped rapid-prototype arcade games under 48-hour and 72-hour shot clocks, focusing on game feel, screen shake, radial focus lines, and tight controls.',
-        'Collaborated across pixel art, procedural animation, and C#/GDScript/JS gameplay scripting.'
+        'Worked as a reliever covering shifts and assisting with day-to-day operations and food service tasks.',
+        'Served customers respectfully, handled orders, and kept the work and service counters clean and organized.'
       ],
-      badge: 'CLUTCH PERFORMER'
+      badge: '6 MONTHS'
     },
     {
-      quarter: 'Q1 // ROOKIE TIP-OFF',
-      period: '2023 — 2024',
-      title: 'FOUNDATIONS IN C++, ALGORITHMS & DIGITAL CIRCUITS',
-      org: 'Engineering Student Society & Makerspace',
+      quarter: 'ACADEMIC FOUNDATIONS',
+      period: 'PRIMARY & SECONDARY EDUCATION',
+      title: 'BASIC & SECONDARY EDUCATION',
+      org: 'Antipolo Schools',
       highlights: [
-        'Built first custom physics simulations, microcontroller robotics prototypes, and arcade clones from scratch.',
-        'Established a relentless Heat Culture engineering ethic: clean code, measurable frame times, and zero excuses.'
+        'Senior High School: St John\'s Wort Montessori School',
+        'Junior High School: San Roque National High School',
+        'Elementary School: Lores Elementary School'
       ],
-      badge: 'ROOKIE OF THE YEAR'
+      badge: 'GRADUATE'
     }
   ],
 
+  personalInfo: {
+    name: 'Dyle Jhoven E. Payla',
+    age: 23,
+    address: 'Blk 10 Lot 9 Marigman Street, Golden Hills, Barangay San Roque, Antipolo City',
+    contactNo: '09184511708',
+    references: 'Available upon request.'
+  },
+
   socials: {
-    email: 'dyle.gamedev@heatculture.dev',
-    github: 'https://github.com/',
-    itch: 'https://itch.io/',
-    linkedin: 'https://linkedin.com/',
-    resumeLabel: 'DOWNLOAD SCOUTING DOSSIER (PDF)'
+    contactNumber: '09184511708',
+    location: 'Antipolo City, Rizal, Philippines',
+    tic80: 'https://tic80.com/dev/congusbongus/dunkman',
+    github: 'https://github.com/cxong/Dunkman'
   }
 };
 

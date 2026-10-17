@@ -931,37 +931,51 @@ body {
   padding: 0.2rem 0.55rem;
 }
 
+.skill-items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .skill-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.skill-item-box {
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--accent-secondary);
+  padding: 0.8rem 0.95rem;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.skill-item-box:hover {
+  border-left-color: var(--accent-bright);
+  transform: translateY(-1px);
+}
+
+.skill-item-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.skill-item-desc {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
 .skill-row {
   margin-bottom: 0.75rem;
 }
 
 .skill-row:last-child {
   margin-bottom: 0;
-}
-
-.skill-row__meta {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  margin-bottom: 0.28rem;
-}
-
-.skill-row__rating {
-  color: var(--accent-secondary);
-  font-weight: 800;
-}
-
-.skill-bar-track {
-  width: 100%;
-  height: 8px;
-  background: #08080c;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.skill-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
 }
 
 /* Section 03: Highlight Reel Projects */
@@ -1181,7 +1195,25 @@ body {
 
 .contact-row__email {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+  letter-spacing: 0.05em;
+}
+
+.contact-meta-row {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.contact-meta-item strong {
   color: var(--accent-secondary);
 }
 

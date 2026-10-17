@@ -618,7 +618,7 @@ export const SPRITES = {
   },
 
   /**
-   * Draws the letterboxed anime cut-in banner ("I AM DYLE — THE DUNKMAN!!!") for CutInState.
+   * Draws the letterboxed anime cut-in banner ("I AM DYLE : THE DUNKMAN!!!") for CutInState.
    */
   drawCutInBanner(ctx, palette, focuslines, shakeX = 0, shakeY = 0) {
     const sx = Math.round(shakeX);
